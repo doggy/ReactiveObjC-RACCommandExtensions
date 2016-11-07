@@ -3,7 +3,7 @@ Provide RACCommand's extensions such as concurrent task but executed in a serial
 
 ### Feature
 
-Main idea of `RACSerialCommand` is based on [this repo](https://github.com/haifengkao/RACSerialCommand)
+Main idea of `RACSerialCommand` is based on [this repo](https://github.com/haifengkao/RACSerialCommand) and [disscusion on StackOverFlow](http://stackoverflow.com/questions/23382691/building-a-queue-with-rac-idioms)
 
 With those improvements:
 
