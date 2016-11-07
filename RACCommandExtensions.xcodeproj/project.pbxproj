@@ -13,7 +13,14 @@
 		584BA92D1DD05C37004ADEFA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 584BA92B1DD05C37004ADEFA /* Main.storyboard */; };
 		584BA92F1DD05C37004ADEFA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 584BA92E1DD05C37004ADEFA /* Assets.xcassets */; };
 		584BA9321DD05C37004ADEFA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 584BA9301DD05C37004ADEFA /* LaunchScreen.storyboard */; };
-		584BA93D1DD05C37004ADEFA /* RACCommandExtensionsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 584BA93C1DD05C37004ADEFA /* RACCommandExtensionsTests.m */; };
+		584BA94E1DD05D8C004ADEFA /* RACSerialCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 584BA94D1DD05D8C004ADEFA /* RACSerialCommand.m */; };
+		584BA9511DD05DB7004ADEFA /* ReactiveObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 584BA9501DD05DB7004ADEFA /* ReactiveObjC.framework */; };
+		584BA9601DD060A9004ADEFA /* ReactiveObjC.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 584BA9501DD05DB7004ADEFA /* ReactiveObjC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		584BA9611DD06254004ADEFA /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 584BA9531DD05DD8004ADEFA /* Quick.framework */; };
+		584BA9621DD06256004ADEFA /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 584BA9521DD05DD8004ADEFA /* Nimble.framework */; };
+		584BA9631DD062AF004ADEFA /* Quick.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 584BA9531DD05DD8004ADEFA /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		584BA9641DD062B1004ADEFA /* Nimble.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 584BA9521DD05DD8004ADEFA /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		584BA9661DD062D0004ADEFA /* RACSerialCommandSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 584BA9651DD062D0004ADEFA /* RACSerialCommandSpec.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,6 +32,32 @@
 			remoteInfo = RACCommandExtensions;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		584BA9581DD05EED004ADEFA /* Copy Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				584BA9641DD062B1004ADEFA /* Nimble.framework in Copy Frameworks */,
+				584BA9631DD062AF004ADEFA /* Quick.framework in Copy Frameworks */,
+			);
+			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		584BA95F1DD060A4004ADEFA /* Copy Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				584BA9601DD060A9004ADEFA /* ReactiveObjC.framework in Copy Frameworks */,
+			);
+			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		584BA91F1DD05C37004ADEFA /* RACCommandExtensions.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RACCommandExtensions.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -38,8 +71,13 @@
 		584BA9311DD05C37004ADEFA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		584BA9331DD05C37004ADEFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		584BA9381DD05C37004ADEFA /* RACCommandExtensionsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RACCommandExtensionsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		584BA93C1DD05C37004ADEFA /* RACCommandExtensionsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RACCommandExtensionsTests.m; sourceTree = "<group>"; };
 		584BA93E1DD05C38004ADEFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		584BA94C1DD05D8C004ADEFA /* RACSerialCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RACSerialCommand.h; sourceTree = "<group>"; };
+		584BA94D1DD05D8C004ADEFA /* RACSerialCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RACSerialCommand.m; sourceTree = "<group>"; };
+		584BA9501DD05DB7004ADEFA /* ReactiveObjC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveObjC.framework; path = Carthage/Build/iOS/ReactiveObjC.framework; sourceTree = "<group>"; };
+		584BA9521DD05DD8004ADEFA /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
+		584BA9531DD05DD8004ADEFA /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
+		584BA9651DD062D0004ADEFA /* RACSerialCommandSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RACSerialCommandSpec.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				584BA9511DD05DB7004ADEFA /* ReactiveObjC.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,6 +93,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				584BA9621DD06256004ADEFA /* Nimble.framework in Frameworks */,
+				584BA9611DD06254004ADEFA /* Quick.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,9 +104,11 @@
 		584BA9161DD05C37004ADEFA = {
 			isa = PBXGroup;
 			children = (
+				584BA94B1DD05D8C004ADEFA /* Class */,
 				584BA9211DD05C37004ADEFA /* RACCommandExtensions */,
 				584BA93B1DD05C37004ADEFA /* RACCommandExtensionsTests */,
 				584BA9201DD05C37004ADEFA /* Products */,
+				584BA94F1DD05DB7004ADEFA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -105,10 +148,29 @@
 		584BA93B1DD05C37004ADEFA /* RACCommandExtensionsTests */ = {
 			isa = PBXGroup;
 			children = (
-				584BA93C1DD05C37004ADEFA /* RACCommandExtensionsTests.m */,
+				584BA9651DD062D0004ADEFA /* RACSerialCommandSpec.m */,
 				584BA93E1DD05C38004ADEFA /* Info.plist */,
 			);
 			path = RACCommandExtensionsTests;
+			sourceTree = "<group>";
+		};
+		584BA94B1DD05D8C004ADEFA /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				584BA94C1DD05D8C004ADEFA /* RACSerialCommand.h */,
+				584BA94D1DD05D8C004ADEFA /* RACSerialCommand.m */,
+			);
+			path = Class;
+			sourceTree = "<group>";
+		};
+		584BA94F1DD05DB7004ADEFA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				584BA9521DD05DD8004ADEFA /* Nimble.framework */,
+				584BA9531DD05DD8004ADEFA /* Quick.framework */,
+				584BA9501DD05DB7004ADEFA /* ReactiveObjC.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -121,6 +183,7 @@
 				584BA91B1DD05C37004ADEFA /* Sources */,
 				584BA91C1DD05C37004ADEFA /* Frameworks */,
 				584BA91D1DD05C37004ADEFA /* Resources */,
+				584BA95F1DD060A4004ADEFA /* Copy Frameworks */,
 			);
 			buildRules = (
 			);
@@ -138,6 +201,7 @@
 				584BA9341DD05C37004ADEFA /* Sources */,
 				584BA9351DD05C37004ADEFA /* Frameworks */,
 				584BA9361DD05C37004ADEFA /* Resources */,
+				584BA9581DD05EED004ADEFA /* Copy Frameworks */,
 			);
 			buildRules = (
 			);
@@ -215,6 +279,7 @@
 			files = (
 				584BA92A1DD05C37004ADEFA /* ViewController.m in Sources */,
 				584BA9271DD05C37004ADEFA /* AppDelegate.m in Sources */,
+				584BA94E1DD05D8C004ADEFA /* RACSerialCommand.m in Sources */,
 				584BA9241DD05C37004ADEFA /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -223,7 +288,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				584BA93D1DD05C37004ADEFA /* RACCommandExtensionsTests.m in Sources */,
+				584BA9661DD062D0004ADEFA /* RACSerialCommandSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,6 +414,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = RACCommandExtensions/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.taobao.raccommand-ex.RACCommandExtensions";
@@ -360,6 +429,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = RACCommandExtensions/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.taobao.raccommand-ex.RACCommandExtensions";
@@ -370,7 +443,12 @@
 		584BA9451DD05C38004ADEFA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = RACCommandExtensionsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.taobao.raccommand-ex.RACCommandExtensionsTests";
@@ -382,7 +460,12 @@
 		584BA9461DD05C38004ADEFA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = RACCommandExtensionsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.taobao.raccommand-ex.RACCommandExtensionsTests";
