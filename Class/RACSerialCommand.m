@@ -49,14 +49,18 @@
         
         __weak typeof(self) weakSelf = self;
         RACSignal * (^cancelableSignalBlock)(id input) = ^RACSignal *(id input) {
-            // Need defer the signal to prevent it returns an immediately completed signal
-            RACSignal * signalTask = [[signalBlock(input)
-                                       deliverOn:RACScheduler.currentScheduler]
-                                      deliverOn:RACScheduler.currentScheduler];
+            // fetch task
+            RACSignal * signalTask = signalBlock(input);
             
+            // A replay subject is necessary here since
+            // the task signal may become to complete immediately
             RACMulticastConnection * taskConnection = [signalTask
-                                                       publish];
+                                                       multicast:RACReplaySubject.subject];
+            
+            // Return value: multicasted signal
             RACSignal * signalCast = taskConnection.signal;
+            
+            // add task to queue
             [subjectQueue sendNext:[taskConnection.autoconnect
                                     // cancel command by itself while calling function execute:
                                     takeUntil:weakSelf.signalCancel]];

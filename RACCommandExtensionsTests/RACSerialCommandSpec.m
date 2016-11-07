@@ -47,9 +47,8 @@ qck_describe(@"running in serial queue", ^{
     
     qck_beforeEach(^{
         command = [[RACSerialCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-            return [[RACSignal.empty
-                     delay:0.1]
-                    concat:[RACSignal return:input]];
+            return [RACSignal
+                    return:input];
         }];
     });
     
@@ -96,10 +95,23 @@ qck_describe(@"running in serial queue", ^{
         
         expect(arrayInput).withTimeout(2).toEventually(equal(arrayOutput));
     });
+});
+
+qck_describe(@"task cancellation", ^{
+    __block NSMutableArray<NSNumber *> * arrayInput = NSMutableArray.new;
+    __block NSMutableArray<NSNumber *> * arrayOutput = NSMutableArray.new;
     
-    qck_it(@"should dispose all previous executing after calling cancelExecution", ^{
-        NSMutableArray<NSNumber *> * arrayInput = NSMutableArray.new;
-        NSMutableArray<NSNumber *> * arrayOutput = NSMutableArray.new;
+    qck_beforeEach(^{
+        [arrayInput removeAllObjects];
+        [arrayOutput removeAllObjects];
+    });
+    
+    qck_it(@"should cancel 1-4, since all task signals are pending in queue", ^{
+        RACSerialCommand * command = [[RACSerialCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+            return [[RACSignal.empty
+                     delay:0.1]
+                    concat:[RACSignal return:input]];
+        }];
         
         NSUInteger i = 0;
         while (i++ < 10) {
@@ -115,7 +127,36 @@ qck_describe(@"running in serial queue", ^{
             }
         }
         
-        expect(arrayInput).withTimeout(2).toEventually(equal(arrayOutput));
+        // Output: 5,6,7,8,9,10
+        expect(arrayOutput).withTimeout(2).toEventually(equal(arrayInput));
+    });
+    
+    qck_it(@"should not cancel any task since all signals running synchronously", ^{
+        RACSerialCommand * command = [[RACSerialCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+            return [RACSignal
+                    return:input];
+        }];
+        
+        // Okay, ...
+        //  It's just looks rightly in theory.
+        //  In practice, Task 1-4 should be cancelled cus
+        //    'execute:' always perform in next loop
+        //    A enhanced logic should be updated here
+        NSUInteger i = 0;
+        while (i++ < 10) {
+            NSNumber * indexValue = @(i);
+            [arrayInput addObject:indexValue];
+            [[command execute:indexValue]
+             subscribeNext:^(NSNumber * indexValue) {
+                 [arrayOutput addObject:indexValue];
+             }];
+            if (i == 4) {
+                [command cancelExecution];
+            }
+        }
+        
+        // Output: 1-10
+        expect(arrayOutput).withTimeout(2).toEventually(equal(arrayInput));
     });
 });
 

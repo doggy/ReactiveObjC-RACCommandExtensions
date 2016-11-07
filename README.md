@@ -76,4 +76,4 @@ Feel free to check the Test Case and press Ctrl+U to run the unit test.
 
 * RACSerialCommand Runloop improvement
     
-    A signal returned with `execute:` is multicasted. Currently, added a delay logic to ensuring the signal can be subscribed in future.
+    Signal running in synchronous should also be cancelled. (It's really a minor issue. Refer last test case pls.)
