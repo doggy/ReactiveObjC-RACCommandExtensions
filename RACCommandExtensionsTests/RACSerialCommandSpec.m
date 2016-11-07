@@ -67,8 +67,34 @@ qck_describe(@"running in serial queue", ^{
              }];
         }
         
-        // max default timeout is one second
-        expect(arrayInput).withTimeout(1).toEventually(equal(arrayOutput));
+        // timeout default is one second
+        expect(arrayInput).toEventually(equal(arrayOutput));
+    });
+    
+    qck_it(@"should execute all tasks one by one", ^{
+        NSMutableArray<NSNumber *> * arrayInput = NSMutableArray.new;
+        NSMutableArray<NSNumber *> * arrayOutput = NSMutableArray.new;
+        
+        RACSignal * queueSignal = RACSignal.empty;
+        
+        NSUInteger i = 0;
+        while (i++ < 10) {
+            NSNumber * indexValue = @(i);
+            [arrayInput addObject:indexValue];
+            RACSignal * taskSignal = [[command execute:indexValue]
+                                      doNext:^(NSNumber * indexValue) {
+                                          [arrayOutput addObject:indexValue];
+                                      }];
+            queueSignal = [queueSignal concat:taskSignal];
+        }
+        
+        __block BOOL bFinished = NO;
+        [queueSignal subscribeCompleted:^{
+            bFinished = YES;
+        }];
+        expect(@(bFinished)).withTimeout(2).toEventually(beTruthy());
+        
+        expect(arrayInput).withTimeout(2).toEventually(equal(arrayOutput));
     });
     
     qck_it(@"should dispose all previous executing after calling cancelExecution", ^{
@@ -89,8 +115,7 @@ qck_describe(@"running in serial queue", ^{
             }
         }
         
-        // max default timeout is one second
-        expect(arrayInput).withTimeout(1).toEventually(equal(arrayOutput));
+        expect(arrayInput).withTimeout(2).toEventually(equal(arrayOutput));
     });
 });
 
